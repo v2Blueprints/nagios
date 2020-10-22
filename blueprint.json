@@ -1,0 +1,59 @@
+{
+	"title": "nagios",
+	"description": "Nagios Monitoring",
+	"configuration": {
+		"DEBIAN_FRONTEND": "noninteractive",
+		"TZ": "Australia/Sydney",
+		"admin_email": "",
+		"admin_pager": ""
+	},
+	"os_packages": [
+		{
+			"type": "debian",
+			"name": "nagios4"
+		}
+	],
+	"modules": [
+		{
+			"install_cmd": "a2enmod",
+			"modules": "auth_digest authz_groupfile"
+		}
+	],
+	"bindings": [
+		{
+			"type": "embed",
+			"repository": "https://github.com/v2Blueprints/apache",
+			"branch": "hashidocker",
+			"variables": {
+				"port": 8080,
+				"ServerAdmin": "nagios_admin@^^domain_name^^"
+			}
+		},
+		{
+			"type": "embed",
+			"repository": "https://github.com/v2Blueprints/postfix_relay",
+			"branch": "hashidocker",
+			"variables": {
+				"default_domain": "^^domain_name^^",
+				"smarthost": {
+					"host": "user_set",
+					"auth_type": "user_set",
+					"user": "user_set",
+					"password": "user_set",
+					"port": "user_set"
+				}
+			}
+		}
+	],
+	"images": [
+		{
+			"type": "lxd",
+			"image": "images/debian/stretch/cloud"
+		}
+	],
+	"containers": [
+		{
+			"type": "lxd"
+		}
+	]
+}
