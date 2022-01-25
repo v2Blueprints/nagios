@@ -1,6 +1,8 @@
 {
-	"title": "nagios",
-	"description": "Nagios Monitoring",
+	"about": {
+		"title": "nagios",
+		"explanation": "Nagios Monitoring"
+	},
 	"configuration": {
 		"TZ": "Australia/Sydney",
 		"admin_email": "",
@@ -9,8 +11,8 @@
 	"system_packages": {
 		"adds": [
 			"nagios4"
-    ]
-  },
+		]
+	},
 	"modules": [
 		{
 			"apache": [
