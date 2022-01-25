@@ -2,7 +2,6 @@
 	"title": "nagios",
 	"description": "Nagios Monitoring",
 	"configuration": {
-		"DEBIAN_FRONTEND": "noninteractive",
 		"TZ": "Australia/Sydney",
 		"admin_email": "",
 		"admin_pager": ""
