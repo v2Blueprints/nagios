@@ -7,33 +7,36 @@
 		"admin_email": "",
 		"admin_pager": ""
 	},
-	"os_packages": [
-		{
-			"type": "debian",
-			"name": "nagios4"
-		}
-	],
+	"system_packages": {
+		"adds": [
+			"nagios4"
+    ]
+  },
 	"modules": [
 		{
-			"install_cmd": "a2enmod",
-			"modules": "auth_digest authz_groupfile"
+			"apache": [
+				"auth_digest",
+				"authz_groupfile"
+			]
 		}
 	],
 	"bindings": [
 		{
 			"type": "embed",
-			"repository": "https://github.com/v2Blueprints/apache",
-			"branch": "hashidocker",
-			"variables": {
+			"configuration": {
 				"port": 8080,
 				"ServerAdmin": "nagios_admin@^^domain_name^^"
-			}
+			},
+			"target": {
+				"repository": "https://github.com/v2Blueprints/apache"
+      }
 		},
 		{
 			"type": "embed",
-			"repository": "https://github.com/v2Blueprints/postfix_relay",
-			"branch": "hashidocker",
-			"variables": {
+			"target": {
+				"repository": "https://github.com/v2Blueprints/postfix_relay"
+			},
+			"configuration": {
 				"default_domain": "^^domain_name^^",
 				"smarthost": {
 					"host": "user_set",
@@ -47,13 +50,10 @@
 	],
 	"images": [
 		{
-			"type": "lxd",
-			"image": "images/debian/stretch/cloud"
-		}
-	],
-	"containers": [
-		{
-			"type": "lxd"
+			"runtimes": [
+				"lxd"
+			],
+			"identifier": "images/debian/stretch/cloud"
 		}
 	]
 }
