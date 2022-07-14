@@ -13,7 +13,7 @@
 			"nagios4"
 		]
 	},
-	"modules": [
+	"managed_packages": [
 		{
 			"apache": [
 				"auth_digest",
@@ -47,14 +47,6 @@
 					"port": "user_set"
 				}
 			}
-		}
-	],
-	"images": [
-		{
-			"runtimes": [
-				"lxd"
-			],
-			"identifier": "images/debian/stretch/cloud"
 		}
 	]
 }
